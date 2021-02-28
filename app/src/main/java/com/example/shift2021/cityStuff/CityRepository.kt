@@ -1,6 +1,4 @@
-package com.example.shift2021
-
-import android.app.Application
+package com.example.shift2021.cityStuff
 
 class CityRepository {
     private val cities = mutableListOf(
