@@ -34,7 +34,6 @@ class DetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         cityRepository = (application as CityWeatherApplication).cityRepository
         setContentView(R.layout.activity_details)
-
         initViews()
     }
 

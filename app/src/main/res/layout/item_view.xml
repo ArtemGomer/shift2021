@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="12dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -10,12 +9,13 @@
         android:id="@+id/cityText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:textSize="16sp"
+        android:layout_margin="12dp"
+        android:textSize="28sp"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@id/separator"
         tools:text="Moscow" />
 
@@ -23,8 +23,9 @@
         android:id="@+id/temperatureText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:textSize="16sp"
+        android:layout_margin="12dp"
+        android:textSize="24sp"
+        android:textColor="@color/purple_700"
         app:layout_constraintStart_toEndOf="@id/cityText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
