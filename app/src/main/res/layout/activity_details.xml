@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/sky_blue"
     tools:context=".DetailsActivity">
 
     <TextView
@@ -22,33 +23,68 @@
         android:id="@+id/city_country_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
         android:layout_margin="10dp"
+        android:layout_gravity="center"
         android:textColor="@color/purple_700"
-        tools:text="Russia"
-        />
+        android:textSize="30dp"
+        tools:text="Russia" />
 
-    <TextView
-        android:id="@+id/city_temperature_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="25dp"
-        android:layout_gravity="right"
-        android:layout_margin="24dp"
-        tools:text="temperature: -7"
-        android:textColor="@color/black"
-        />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="300sp">
 
-    <TextView
-        android:id="@+id/city_precipitation_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="25dp"
-        android:layout_gravity="right"
-        android:layout_margin="24dp"
-        tools:text="precipitation: sunny"
-        android:textColor="@color/black"
-        />
+
+        <TextView
+            android:id="@+id/city_temperature_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/temperaturePng"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/city_precipitation_text"
+            android:textSize="70sp"
+            tools:text="-7" />
+
+        <TextView
+            android:id="@+id/city_precipitation_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_margin="24dp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/weatherPng"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/city_temperature_text"
+            android:textSize="70sp"
+            tools:text="sunny" />
+
+        <ImageView
+            android:id="@+id/weatherPng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/cloudy"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/city_precipitation_text"
+            app:layout_constraintTop_toBottomOf="@id/temperaturePng"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <ImageView
+            android:id="@+id/temperaturePng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/temperature"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/city_temperature_text"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/weatherPng"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <Button
         android:id="@+id/back_button"
