@@ -1,4 +1,4 @@
-package com.example.shift2021.cityStuff
+package com.example.shift2021.model
 
 class CityRepository {
     private val cities = mutableListOf(
