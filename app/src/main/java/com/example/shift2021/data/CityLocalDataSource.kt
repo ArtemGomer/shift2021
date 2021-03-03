@@ -1,6 +1,12 @@
-package com.example.shift2021.model
+package com.example.shift2021.data
 
-class CityRepository {
+import com.example.shift2021.domain.CityWeather
+
+class CityLocalDataSource: CityDataSource{
+    override fun getCityById(id: Long) = cities.firstOrNull { it.id == id }
+
+    override fun getCities(): List<CityWeather> = cities
+
     private val cities = mutableListOf(
             CityWeather(0, "Moscow", "Russia", "-10", "sunny"),
             CityWeather(1, "Berlin", "Germany", "0", "cloudy"),
@@ -9,8 +15,4 @@ class CityRepository {
             CityWeather(4, "Kiev", "Ukraine", "-15", "snowy"),
             CityWeather(5, "Minsk", "Belarus", "-7", "sunny")
     )
-
-    fun getCityById(id: Long): CityWeather? = cities.firstOrNull { it.id == id }
-
-    fun getCities(): List<CityWeather> = cities
 }

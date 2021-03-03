@@ -1,4 +1,4 @@
-package com.example.shift2021.model
+package com.example.shift2021.domain
 
 data class CityWeather (
         val id: Long,

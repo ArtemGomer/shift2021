@@ -1,4 +1,4 @@
-package com.example.shift2021.view.list
+package com.example.shift2021.presentation.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shift2021.R
-import com.example.shift2021.model.CityWeather
+import com.example.shift2021.domain.CityWeather
 
 class CityAdapter(private val onClick: (CityWeather) -> Unit) : RecyclerView.Adapter<CityHolder>() {
 

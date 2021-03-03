@@ -1,4 +1,4 @@
-package com.example.shift2021.view.details
+package com.example.shift2021.presentation.details
 
 import android.content.Context
 import android.content.Intent
@@ -7,9 +7,8 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import com.example.shift2021.R
-import com.example.shift2021.model.CityWeather
-import com.example.shift2021.model.CityWeatherApplication
-import com.example.shift2021.presenter.DetailsPresenter
+import com.example.shift2021.domain.CityWeather
+import com.example.shift2021.CityWeatherApplication
 
 class DetailsActivity : AppCompatActivity(), DetailsView {
 
@@ -25,8 +24,7 @@ class DetailsActivity : AppCompatActivity(), DetailsView {
     }
 
     private val presenter by lazy {
-        DetailsPresenter((application as CityWeatherApplication).cityRepository,
-        intent.getLongExtra(EXTRA_ID, 0))
+        DetailsPresenterFactory.getPresenter(intent.getLongExtra(EXTRA_ID, 0))
     }
 
 

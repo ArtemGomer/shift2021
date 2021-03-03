@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/sky_blue"
-    tools:context=".view.details.DetailsActivity">
+    tools:context=".presentation.details.DetailsActivity">
 
     <TextView
         android:id="@+id/city_name_text"

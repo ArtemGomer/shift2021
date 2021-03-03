@@ -1,19 +1,18 @@
-package com.example.shift2021.view.list
+package com.example.shift2021.presentation.list
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shift2021.R
-import com.example.shift2021.model.CityWeather
-import com.example.shift2021.model.CityWeatherApplication
-import com.example.shift2021.presenter.ListPresenter
-import com.example.shift2021.view.details.DetailsActivity
+import com.example.shift2021.domain.CityWeather
+import com.example.shift2021.CityWeatherApplication
+import com.example.shift2021.presentation.details.DetailsActivity
 
 class ListActivity : AppCompatActivity(), ListView {
 
     private val presenter by lazy {
-        ListPresenter((application as CityWeatherApplication).cityRepository)
+        ListPresenterFactory.getPresenter()
     }
 
     private lateinit var cityList: RecyclerView
