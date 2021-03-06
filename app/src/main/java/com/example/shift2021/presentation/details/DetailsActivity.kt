@@ -7,24 +7,23 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import com.example.shift2021.R
-import com.example.shift2021.domain.CityWeather
-import com.example.shift2021.CityWeatherApplication
+import com.example.shift2021.domain.cityModel.CityWeather
 
 class DetailsActivity : AppCompatActivity(), DetailsView {
 
     companion object {
 
-        private const val EXTRA_ID = "EXTRA_ID"
+        private const val EXTRA_NAME = "EXTRA_NAME"
 
-        fun start(context: Context, id: Long) {
+        fun start(context: Context, name: String) {
             val intent = Intent(context, DetailsActivity::class.java)
-            intent.putExtra(EXTRA_ID, id)
+            intent.putExtra(EXTRA_NAME, name)
             context.startActivity(intent)
         }
     }
 
     private val presenter by lazy {
-        DetailsPresenterFactory.getPresenter(intent.getLongExtra(EXTRA_ID, 0))
+        DetailsPresenterFactory.getPresenter(intent.getStringExtra(EXTRA_NAME) ?: "Unknown")
     }
 
 
@@ -51,9 +50,9 @@ class DetailsActivity : AppCompatActivity(), DetailsView {
 
     override fun bindCity(city: CityWeather) {
         nameText.text = city.name
-        temperatureText.text = getString(R.string.temperature_format, city.temperature)
-        countryText.text = city.country
-        precipitationText.text = getString(R.string.precipitation_format, city.precipitation)
+        temperatureText.text = getString(R.string.temperature_format, city.main.temp.toString())
+        countryText.text = city.sys.country
+        precipitationText.text = getString(R.string.precipitation_format, city.weather[0].description)
         backButton.setOnClickListener {
             presenter.getBack()
         }

@@ -1,15 +1,17 @@
 package com.example.shift2021.data
 
-import com.example.shift2021.domain.CityRepository
 import com.example.shift2021.domain.cityModel.CityWeather
 import com.example.shift2021.domain.cityModel.HTTPResponse
 import io.reactivex.Single
+import io.reactivex.schedulers.Schedulers
 
-class CityRepositoryImpl(private val cityDataSource: CityDataSource): CityRepository {
+class CityRemoteDataSource(private val api: CityApi): CityDataSource{
     override fun getCity(name: String): Single<CityWeather> =
-        cityDataSource.getCity(name)
-
+            api.getCity(name)
+                    .subscribeOn(Schedulers.io())
 
     override fun getCities(): Single<HTTPResponse> =
-            cityDataSource.getCities()
+            api.getCitiesList()
+                    .subscribeOn(Schedulers.io())
+
 }

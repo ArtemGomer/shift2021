@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shift2021.R
-import com.example.shift2021.domain.CityWeather
+import com.example.shift2021.domain.cityModel.CityWeather
 
 class CityAdapter(private val onClick: (CityWeather) -> Unit) : RecyclerView.Adapter<CityHolder>() {
 
@@ -36,7 +36,7 @@ class CityHolder(itemView: View, private val onClick: (CityWeather) -> Unit) : R
 
     fun bind(city: CityWeather) {
         cityText.text = city.name
-        temperatureText.text =itemView.context.getString(R.string.temperature_format, city.temperature)
+        temperatureText.text =itemView.context.getString(R.string.temperature_format, city.main.temp)
         itemView.setOnClickListener { onClick(city) }
     }
 }

@@ -3,4 +3,6 @@
     <string name="temperature_format">%1$s</string>
     <string name="precipitation_format">%1$s</string>
     <string name="back_button_text">back</string>
+    <string name="find_button_text">find</string>
+    <string name="find_city_text">Enter city name</string>
 </resources>
