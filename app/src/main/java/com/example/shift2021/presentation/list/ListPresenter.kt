@@ -22,4 +22,8 @@ class ListPresenter(private val getCitiesUseCase: GetCitiesUseCase) : BasePresen
         view?.openDetailsScreen(city.name)
     }
 
+    fun findCity(name: String) {
+        view?.openDetailsScreen(name)
+    }
+
 }

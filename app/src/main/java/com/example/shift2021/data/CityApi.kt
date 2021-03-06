@@ -15,7 +15,7 @@ interface CityApi {
     ): Single<HTTPResponse>
 
     @GET("weather")
-    fun getCity(@Query("city name") name: String,
+    fun getCity(@Query("q") name: String,
                 @Query("appid") appid: String = "8690c561fbde90f53ac2fe5b7bf7dd6f"
     ): Single<CityWeather>
 }

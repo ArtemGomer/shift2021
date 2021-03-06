@@ -5,9 +5,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import com.example.shift2021.R
 import com.example.shift2021.domain.cityModel.CityWeather
+import com.squareup.picasso.Picasso
 
 class DetailsActivity : AppCompatActivity(), DetailsView {
 
@@ -31,6 +33,7 @@ class DetailsActivity : AppCompatActivity(), DetailsView {
     private lateinit var temperatureText: TextView
     private lateinit var countryText: TextView
     private lateinit var precipitationText: TextView
+    private lateinit var precipImage: ImageView
     private lateinit var backButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,13 +49,16 @@ class DetailsActivity : AppCompatActivity(), DetailsView {
         temperatureText = findViewById(R.id.city_temperature_text)
         precipitationText = findViewById(R.id.city_precipitation_text)
         backButton = findViewById(R.id.back_button)
+        precipImage = findViewById(R.id.weatherPng)
     }
 
     override fun bindCity(city: CityWeather) {
         nameText.text = city.name
-        temperatureText.text = getString(R.string.temperature_format, city.main.temp.toString())
+        temperatureText.text = getString(R.string.temperature_format, (city.main.temp - 273).toInt().toString())
         countryText.text = city.sys.country
         precipitationText.text = getString(R.string.precipitation_format, city.weather[0].description)
+        val url = "http://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png"
+        Picasso.with(this).load(url).resize(128, 128).into(precipImage)
         backButton.setOnClickListener {
             presenter.getBack()
         }

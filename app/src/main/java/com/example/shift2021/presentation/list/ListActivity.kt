@@ -37,6 +37,9 @@ class ListActivity : AppCompatActivity(), ListView {
         findCityEditText = findViewById(R.id.findCityEditText)
         cityList.adapter = adapter
         cityList.layoutManager = LinearLayoutManager(this)
+        findButton.setOnClickListener {
+            presenter.findCity(findCityEditText.text.toString())
+        }
     }
 
     override fun onResume() {

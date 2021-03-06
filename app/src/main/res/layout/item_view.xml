@@ -33,9 +33,9 @@
         tools:text="+10" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/sun"
+        android:id="@+id/condPng"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         app:layout_constraintStart_toEndOf="@id/temperatureText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

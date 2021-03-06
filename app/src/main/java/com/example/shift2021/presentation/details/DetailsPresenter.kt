@@ -17,7 +17,6 @@ class DetailsPresenter(
                 .subscribe({
                     view?.bindCity(it)
                 }, {
-                    it.printStackTrace()
                     view?.closeScreen()
                 })
                 .untilDestroy()
