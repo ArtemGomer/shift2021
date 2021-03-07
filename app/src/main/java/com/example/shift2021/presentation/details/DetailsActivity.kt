@@ -4,9 +4,8 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
+import androidx.core.view.isVisible
 import com.example.shift2021.R
 import com.example.shift2021.domain.cityModel.CityWeather
 import com.squareup.picasso.Picasso
@@ -35,11 +34,17 @@ class DetailsActivity : AppCompatActivity(), DetailsView {
     private lateinit var precipitationText: TextView
     private lateinit var precipImage: ImageView
     private lateinit var backButton: Button
+    private lateinit var progressBar: ProgressBar
+    private lateinit var content: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
         initViews()
+        presenter.loading.observe(this) {
+            content.isVisible = !it
+            progressBar.isVisible = it
+        }
         presenter.attachView(this)
     }
 
@@ -50,6 +55,8 @@ class DetailsActivity : AppCompatActivity(), DetailsView {
         precipitationText = findViewById(R.id.city_precipitation_text)
         backButton = findViewById(R.id.back_button)
         precipImage = findViewById(R.id.weatherPng)
+        progressBar = findViewById(R.id.progress_circular)
+        content = findViewById(R.id.content)
     }
 
     override fun bindCity(city: CityWeather) {

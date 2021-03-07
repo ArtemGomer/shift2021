@@ -10,7 +10,7 @@ interface CityApi {
     @GET("find")
     fun getCitiesList(@Query("lat") lat: Int = 55,
                       @Query("lon") lon: Int = 83,
-                      @Query("cnt") cnt: Int = 10,
+                      @Query("cnt") cnt: Int = 20,
                       @Query("appid") appid: String = "8690c561fbde90f53ac2fe5b7bf7dd6f"
     ): Single<HTTPResponse>
 
