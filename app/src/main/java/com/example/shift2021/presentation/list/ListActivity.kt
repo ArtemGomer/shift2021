@@ -9,6 +9,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shift2021.R
+import com.example.shift2021.databinding.ActivityMainBinding
 import com.example.shift2021.domain.cityModel.CityWeather
 import com.example.shift2021.presentation.details.DetailsActivity
 
@@ -18,34 +19,28 @@ class ListActivity : AppCompatActivity(), ListView {
         ListPresenterFactory.getPresenter()
     }
 
-    private lateinit var cityList: RecyclerView
-    private lateinit var findButton: Button
-    private lateinit var findCityEditText: EditText
-    private lateinit var progressBar: ProgressBar
+    private lateinit var activityMainBinding: ActivityMainBinding
     private val adapter = CityAdapter {
         presenter.onCityClicked(it)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(activityMainBinding.root)
         presenter.attachView(this)
         initViews()
         presenter.loading.observe(this) {
-            cityList.isVisible = !it
-            progressBar.isVisible = it
+            activityMainBinding.cityList.isVisible = !it
+            activityMainBinding.progressCircularList.isVisible = it
         }
     }
 
     private fun initViews() {
-        cityList = findViewById(R.id.cityList)
-        findButton = findViewById(R.id.findButton)
-        findCityEditText = findViewById(R.id.findCityEditText)
-        progressBar = findViewById(R.id.progress_circular_list)
-        cityList.adapter = adapter
-        cityList.layoutManager = LinearLayoutManager(this)
-        findButton.setOnClickListener {
-            presenter.findCity(findCityEditText.text.toString())
+        activityMainBinding.cityList.adapter = adapter
+        activityMainBinding.cityList.layoutManager = LinearLayoutManager(this)
+        activityMainBinding.findButton.setOnClickListener {
+            presenter.findCity(activityMainBinding.findCityEditText.text.toString())
         }
     }
 

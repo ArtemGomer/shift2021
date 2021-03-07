@@ -7,6 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface CityApi {
+
     @GET("find")
     fun getCitiesList(@Query("lat") lat: Int = 55,
                       @Query("lon") lon: Int = 83,
