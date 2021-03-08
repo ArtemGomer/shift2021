@@ -8,15 +8,19 @@ import retrofit2.http.Query
 
 interface CityApi {
 
+    companion object {
+        const val KEY = "8690c561fbde90f53ac2fe5b7bf7dd6f"
+    }
+
     @GET("find")
     fun getCitiesList(@Query("lat") lat: Int = 55,
                       @Query("lon") lon: Int = 83,
                       @Query("cnt") cnt: Int = 20,
-                      @Query("appid") appid: String = "8690c561fbde90f53ac2fe5b7bf7dd6f"
+                      @Query("appid") appid: String = KEY
     ): Single<HTTPResponse>
 
     @GET("weather")
     fun getCity(@Query("q") name: String,
-                @Query("appid") appid: String = "8690c561fbde90f53ac2fe5b7bf7dd6f"
+                @Query("appid") appid: String = KEY
     ): Single<CityWeather>
 }
