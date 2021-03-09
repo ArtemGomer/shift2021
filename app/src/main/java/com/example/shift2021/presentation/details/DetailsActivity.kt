@@ -34,11 +34,6 @@ class DetailsActivity : AppCompatActivity(), DetailsView {
         super.onCreate(savedInstanceState)
         activityDetailsBinding = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(activityDetailsBinding.root)
-
-        presenter.loading.observe(this) {
-            activityDetailsBinding.content.isVisible = !it
-            activityDetailsBinding.progressCircular.isVisible = it
-        }
         presenter.attachView(this)
     }
 
@@ -58,5 +53,10 @@ class DetailsActivity : AppCompatActivity(), DetailsView {
 
     override fun closeScreen() {
         finish()
+    }
+
+    override fun setIsLoading(loading: Boolean) {
+        activityDetailsBinding.content.isVisible = !loading
+        activityDetailsBinding.progressCircular.isVisible = loading
     }
 }

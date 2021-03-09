@@ -7,4 +7,6 @@ interface DetailsView: BaseView {
     fun bindCity(city: CityWeather)
 
     fun closeScreen()
+
+    fun setIsLoading(loading: Boolean)
 }

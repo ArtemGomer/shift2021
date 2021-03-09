@@ -30,10 +30,6 @@ class ListActivity : AppCompatActivity(), ListView {
         setContentView(activityMainBinding.root)
         presenter.attachView(this)
         initViews()
-        presenter.loading.observe(this) {
-            activityMainBinding.cityList.isVisible = !it
-            activityMainBinding.progressCircularList.isVisible = it
-        }
     }
 
     private fun initViews() {
@@ -56,4 +52,11 @@ class ListActivity : AppCompatActivity(), ListView {
     override fun openDetailsScreen(name: String) {
         DetailsActivity.start(this, name)
     }
+
+    override fun setIsLoading(loading: Boolean) {
+        activityMainBinding.cityList.isVisible = !loading
+        activityMainBinding.progressCircularList.isVisible = loading
+    }
+
+
 }

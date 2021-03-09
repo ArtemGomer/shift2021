@@ -7,4 +7,6 @@ interface ListView: BaseView {
     fun bindCityList(list: List<CityWeather>)
 
     fun openDetailsScreen(name: String)
+
+    fun setIsLoading(loading: Boolean)
 }
